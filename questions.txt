@@ -1,8 +1,26 @@
-Question Paper
-Total Cost  - Done
-Divide the Tree
-Reversing Elements
-Simple equation
-Array revolve
-Decaying roads
-Plus and Minus
+/*
+// Sample code to perform I/O:
+
+cin >> name;                            // Reading input from STDIN
+cout << "Hi, " << name << ".\n";        // Writing output to STDOUT
+
+// Warning: Printing unwanted or ill-formatted data to output will cause the test cases to fail
+*/
+
+// Write your code here
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+    long int P,H,S,T,x;
+    cin>>P>>S>>T>>H>>x;
+    long long int cost_ticket = 0;
+    for(long int i=0;i<x;++i) {
+        if(S>T) cost_ticket += P;
+        else cost_ticket += H;
+        S -= 1;
+    }
+    cout<<cost_ticket<<"\n";
+    return(0);
+}
