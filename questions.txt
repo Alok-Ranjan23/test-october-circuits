@@ -8,19 +8,36 @@ cout << "Hi, " << name << ".\n";        // Writing output to STDOUT
 */
 
 // Write your code here
+
+
 #include <bits/stdc++.h>
 
 using namespace std;
 
+#define M 10000001
+
 int main() {
-    long int P,H,S,T,x;
-    cin>>P>>S>>T>>H>>x;
-    long long int cost_ticket = 0;
-    for(long int i=0;i<x;++i) {
-        if(S>T) cost_ticket += P;
-        else cost_ticket += H;
-        S -= 1;
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    long arr[M+1];
+    memset(arr,-1,sizeof(arr));
+    for(long int i=2;i*i<=M;++i) {
+        if(arr[i] == -1) {
+            for(long j=i*2;j<=M;j+=i) {
+                arr[j] = 0;
+            }
+        }
     }
-    cout<<cost_ticket<<"\n";
+    
+    for(long i=2;i<=M;++i)  arr[i] += arr[i-1];
+    long int L,R,T;
+    cin>>T;
+    while(T--) {
+        cin>>L>>R;
+        if(L>R) {
+           swap(L,R);
+        }
+        cout<<arr[L-1] - arr[R]<<"\n";
+    }
     return(0);
 }
